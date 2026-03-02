@@ -61,3 +61,8 @@ To run this project locally:
 1. Clone this repository.
 2. Open `index.html` directly in your web browser. 
 3. No build process or package installation is required as Tailwind CSS is served via CDN.
+
+## License & Copyright Disclaimer
+The source code (HTML, CSS, JavaScript) in this repository is licensed under the [MIT License](LICENSE). 
+
+**Disclaimer:** All vehicle images, logos, and specific branding used within this project are the property of their respective copyright holders. They are used strictly for **educational and non-commercial purposes** as part of a university web development assignment. This repository does not claim ownership over these visual assets, and the MIT License does not apply to them.
