@@ -92,12 +92,52 @@
             background: #f4f4f5 !important;
         }
 
-        html:not(.dark) ::-webkit-scrollbar-track {
-            background: #fafafa;
+        html:not(.dark) .bg-zinc-800\/50 {
+            background: #f4f4f5 !important;
+            border-color: #e4e4e7 !important;
         }
 
         html:not(.dark) ::-webkit-scrollbar-thumb {
             background: #d4d4d8;
+        }
+
+        /* Keep inner colored boxes dark in light mode */
+        html:not(.dark) .keep-dark-box {
+            background-color: #27272a !important;
+            /* zinc-800 */
+            border-color: #3f3f46 !important;
+            /* zinc-700 */
+        }
+
+        html:not(.dark) .keep-dark-box .text-white {
+            color: #ffffff !important;
+        }
+
+        html:not(.dark) .keep-dark-box .text-zinc-400 {
+            color: #a1a1aa !important;
+        }
+
+        html:not(.dark) .keep-dark-box .text-zinc-500 {
+            color: #71717a !important;
+        }
+
+        /* Force hero text to stay light independently of theme */
+        html:not(.dark) .hero-text-force-light,
+        html:not(.dark) .hero-text-force-light .text-white {
+            color: #ffffff !important;
+        }
+
+        html:not(.dark) .hero-text-force-light .text-zinc-400 {
+            color: #a1a1aa !important;
+        }
+
+        /* Gradient blend for hero to next section */
+        .hero-gradient-overlay {
+            background: linear-gradient(to bottom, transparent 0%, transparent 60%, rgba(9, 9, 11, 0.8) 80%, #09090b 100%);
+        }
+
+        html:not(.dark) .hero-gradient-overlay {
+            background: linear-gradient(to bottom, transparent 0%, transparent 60%, rgba(250, 250, 250, 0.8) 80%, #fafafa 100%);
         }
     </style>
 </head>
@@ -163,7 +203,8 @@
                 <a href="index.html#screener"
                     class="block px-4 py-2.5 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-md">Auction
                     Screener</a>
-                <a href="how-to-buy.html" class="block px-4 py-2.5 text-sm text-white bg-zinc-800/50 rounded-md">How To
+                <a href="how-to-buy.html"
+                    class="block px-4 py-2.5 text-sm font-medium text-white bg-red-600 rounded-md">How To
                     Buy</a>
                 <a href="index.html#dispatch"
                     class="block px-4 py-2.5 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-md">Order</a>
@@ -172,19 +213,30 @@
     </nav>
 
     <!-- HERO -->
-    <section class="pt-28 pb-16 sm:pt-36 sm:pb-20 bg-zinc-950">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    <section class="relative pt-28 pb-16 sm:pt-36 sm:pb-20 overflow-hidden bg-zinc-950">
+
+        <!-- Stock background (dimmed) -->
+        <div class="absolute inset-0 z-0"
+            style="background-image:url('IMG_STOCK2.jpg'); background-size: cover; background-position: center;"></div>
+
+        <!-- Dark overlay to ensure text readability -->
+        <div class="absolute inset-0 bg-zinc-950/80 z-[1] pointer-events-none"></div>
+
+        <!-- Gradient overlay for smooth transition to next section -->
+        <div class="absolute inset-0 hero-gradient-overlay z-[1] pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <div
-                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 mb-6">
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-500/30 bg-black/40 mb-6 transition-all duration-300 backdrop-blur-sm hero-text-force-light">
                 <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                <span class="font-mono text-xs text-zinc-400 tracking-widest uppercase"
+                <span class="font-mono text-xs text-white tracking-widest uppercase"
                     data-lang-en="Complete Import Guide" data-lang-id="Panduan Impor Lengkap">Complete Import
                     Guide</span>
             </div>
-            <h1 class="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-5"
+            <h1 class="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-5 drop-shadow-lg hero-text-force-light"
                 data-lang-en="How To Buy a JDM Car from Japan" data-lang-id="Cara Membeli Mobil JDM dari Jepang">How To
                 Buy a JDM Car from Japan</h1>
-            <p class="text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed text-lg"
+            <p class="text-zinc-300 font-light max-w-2xl mx-auto leading-relaxed text-lg drop-shadow-md hero-text-force-light"
                 data-lang-en="Everything you need to know about importing a vehicle to Indonesia — from auction bidding to Bea Cukai customs clearance and STNK registration."
                 data-lang-id="Semua yang perlu Anda ketahui tentang mengimpor kendaraan ke Indonesia — dari lelang hingga kepabeanan Bea Cukai dan registrasi STNK.">
                 Everything you need to know about importing a vehicle to Indonesia — from auction bidding to Bea Cukai
@@ -253,9 +305,9 @@
                                 winning, we handle the purchase, deregistration (export cancellation/抹消), and arrange
                                 inland transport to the port.</p>
                             <div class="mt-4 p-4 bg-zinc-800/50 border border-zinc-700/50 rounded-lg">
-                                <p class="font-mono text-xs text-zinc-500 mb-1" data-lang-en="Typical auction flow:"
+                                <p class="font-mono text-xs text-zinc-400 mb-1" data-lang-en="Typical auction flow:"
                                     data-lang-id="Alur lelang tipikal:">Typical auction flow:</p>
-                                <p class="font-mono text-xs text-red-400">Bid → Win → Payment → Deregistration → Port
+                                <p class="font-mono text-xs text-red-300">Bid → Win → Payment → Deregistration → Port
                                     Transport</p>
                             </div>
                         </div>
@@ -284,12 +336,12 @@
                             <div class="mt-4 grid grid-cols-2 gap-3">
                                 <div class="p-3 bg-zinc-800/50 border border-zinc-700/50 rounded-lg text-center">
                                     <p class="font-mono text-xl text-white font-bold">10-18</p>
-                                    <p class="text-zinc-500 text-[11px]" data-lang-en="days shipping"
+                                    <p class="text-zinc-400 text-[11px]" data-lang-en="days shipping"
                                         data-lang-id="hari pengiriman">days shipping</p>
                                 </div>
                                 <div class="p-3 bg-zinc-800/50 border border-zinc-700/50 rounded-lg text-center">
                                     <p class="font-mono text-xl text-white font-bold">RoRo</p>
-                                    <p class="text-zinc-500 text-[11px]" data-lang-en="or Container"
+                                    <p class="text-zinc-400 text-[11px]" data-lang-en="or Container"
                                         data-lang-id="atau Kontainer">or Container</p>
                                 </div>
                             </div>
@@ -322,25 +374,25 @@
                                         data-lang-en="Import Duties & Taxes:" data-lang-id="Bea Masuk & Pajak:">Import
                                         Duties & Taxes:</p>
                                     <div class="space-y-2 font-mono text-xs">
-                                        <div class="flex justify-between"><span class="text-zinc-400"
+                                        <div class="flex justify-between"><span class="text-zinc-300"
                                                 data-lang-en="Bea Masuk (Import Duty)" data-lang-id="Bea Masuk">Bea
-                                                Masuk (Import Duty)</span><span class="text-red-400">50% of CIF</span>
+                                                Masuk (Import Duty)</span><span class="text-red-300">50% of CIF</span>
                                         </div>
-                                        <div class="flex justify-between"><span class="text-zinc-400">PPN (VAT / Value
-                                                Added Tax)</span><span class="text-red-400">11% of (CIF + Bea
+                                        <div class="flex justify-between"><span class="text-zinc-300">PPN (VAT / Value
+                                                Added Tax)</span><span class="text-red-300">11% of (CIF + Bea
                                                 Masuk)</span></div>
-                                        <div class="flex justify-between"><span class="text-zinc-400">PPnBM (Luxury
-                                                Goods Tax)</span><span class="text-red-400">15–125%*</span></div>
-                                        <div class="flex justify-between"><span class="text-zinc-400">PPh 22 (Income
-                                                Tax)</span><span class="text-red-400">7.5% of (CIF + Bea Masuk)</span>
+                                        <div class="flex justify-between"><span class="text-zinc-300">PPnBM (Luxury
+                                                Goods Tax)</span><span class="text-red-300">15–125%*</span></div>
+                                        <div class="flex justify-between"><span class="text-zinc-300">PPh 22 (Income
+                                                Tax)</span><span class="text-red-300">7.5% of (CIF + Bea Masuk)</span>
                                         </div>
                                         <div class="border-t border-zinc-700 pt-2 mt-2">
-                                            <p class="text-zinc-500 text-[10px]"
+                                            <p class="text-zinc-400 text-[10px]"
                                                 data-lang-en="*PPnBM rate depends on engine displacement and vehicle type per PMK regulations"
                                                 data-lang-id="*Tarif PPnBM tergantung pada kapasitas mesin dan jenis kendaraan sesuai peraturan PMK">
                                                 *PPnBM rate depends on engine displacement and vehicle type per PMK
                                                 regulations</p>
-                                            <p class="text-zinc-500 text-[10px] mt-1"
+                                            <p class="text-zinc-400 text-[10px] mt-1"
                                                 data-lang-en="CIF = Cost (car price) + Insurance + Freight (shipping)"
                                                 data-lang-id="CIF = Cost (harga mobil) + Insurance (asuransi) + Freight (ongkos kirim)">
                                                 CIF = Cost (car price) + Insurance + Freight (shipping)</p>
@@ -351,7 +403,7 @@
                                 <div class="p-4 bg-zinc-800/50 border border-zinc-700/50 rounded-lg">
                                     <p class="text-white font-semibold text-sm mb-2" data-lang-en="Key Regulations:"
                                         data-lang-id="Regulasi Utama:">Key Regulations:</p>
-                                    <ul class="space-y-1.5 text-zinc-400 text-sm">
+                                    <ul class="space-y-1.5 text-zinc-300 text-sm">
                                         <li class="flex items-start gap-2"><span class="text-red-500 mt-1">•</span><span
                                                 data-lang-en="Vehicles must be brand new (CBU) OR imported under special category (returning citizen, diplomatic, or gift) per Permendag No. 36/2023"
                                                 data-lang-id="Kendaraan harus baru (CBU) ATAU diimpor di bawah kategori khusus (WNI pulang, diplomatik, atau hadiah) sesuai Permendag No. 36/2023">Vehicles
