@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wangan Imports ID — Premium JDM Imports to Indonesia</title>
+    <meta name="description"
+        content="Wangan Imports ID sources legendary Japanese Domestic Market vehicles from auctions across Japan and delivers them to Indonesia. Hunt your dream JDM machine." />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwindcss.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+                    },
+                },
+            },
+        };
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3f3f46;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ef4444;
+        }
+
+        /* Custom checkbox styling */
+        .filter-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 1.5px solid #52525b;
+            border-radius: 3px;
+            background: transparent;
+            cursor: pointer;
+            position: relative;
+            flex-shrink: 0;
+            transition: all 0.2s ease-out;
+        }
+
+        .filter-checkbox:checked {
+            background: #dc2626;
+            border-color: #dc2626;
+        }
+
+        .filter-checkbox:checked::after {
+            content: '✓';
+            color: white;
+            font-size: 11px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 700;
+        }
+
+        .filter-checkbox:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3);
+        }
+
+        /* Hero background overlay */
+        .hero-bg {
+            background:
+                linear-gradient(180deg, rgba(9, 9, 11, 0.85) 0%, rgba(9, 9, 11, 0.6) 40%, rgba(9, 9, 11, 0.95) 100%),
+                linear-gradient(135deg, #18181b 0%, #1c1917 50%, #0c0a09 100%);
+            background-size: cover;
+        }
+
+        /* Scanline overlay for terminal vibe */
+        .scanlines::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.008) 2px,
+                    rgba(255, 255, 255, 0.008) 4px);
+            pointer-events: none;
+        }
+
+        /* Glow pulse for CTA */
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(220, 38, 38, 0.15);
+            }
+
+            50% {
+                box-shadow: 0 0 35px rgba(220, 38, 38, 0.35);
+            }
+        }
+
+        .glow-pulse {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        /* Blinking cursor */
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        /* Subtle grain texture */
+        .grain::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        /* ── Light Mode Overrides ── */
+        html:not(.dark) body {
+            background: #fafafa;
+            color: #3f3f46;
+        }
+
+        html:not(.dark) .hero-bg {
+            background: linear-gradient(180deg, rgba(250, 250, 250, 0.88) 0%, rgba(250, 250, 250, 0.65) 40%, rgba(250, 250, 250, 0.95) 100%);
+        }
+
+        /* Hero section keeps dark text in light mode for readability over stock images */
+        html:not(.dark) #hero .text-white {
+            color: #ffffff !important;
+        }
+
+        html:not(.dark) #hero .text-zinc-200 {
+            color: #e4e4e7 !important;
+        }
+
+        html:not(.dark) #hero .text-zinc-300 {
+            color: #d4d4d8 !important;
+        }
+
+        html:not(.dark) #hero .text-zinc-400 {
+            color: #a1a1aa !important;
+        }
+
+        html:not(.dark) #hero .text-zinc-500 {
+            color: #71717a !important;
+        }
+
+        html:not(.dark) #hero .text-zinc-600 {
+            color: #52525b !important;
+        }
+
+        html:not(.dark) #hero .text-red-500 {
+            color: #ef4444 !important;
+        }
+
+        html:not(.dark) #hero .text-red-400 {
+            color: #f87171 !important;
+        }
+
+        html:not(.dark) #hero .bg-zinc-900\/50 {
+            background: rgba(24, 24, 27, 0.5) !important;
+        }
+
+        html:not(.dark) #hero .border-zinc-800 {
+            border-color: #3f3f46 !important;
+        }
+
+        html:not(.dark) #hero .bg-red-600 {
+            background: #dc2626 !important;
+        }
+
+        html:not(.dark) #hero .bg-red-600 .text-white,
+        html:not(.dark) #hero a.bg-red-600 {
+            color: #ffffff !important;
+        }
+
+        html:not(.dark) #hero .border-zinc-700 {
+            border-color: #52525b !important;
+        }
+
+        html:not(.dark) nav#navbar {
+            background: rgba(255, 255, 255, 0.75);
+            border-color: #e4e4e7;
+        }
+
+        html:not(.dark) .bg-zinc-900 {
+            background: #ffffff !important;
+        }
+
+        html:not(.dark) .bg-zinc-950 {
+            background: #fafafa !important;
+        }
+
+        html:not(.dark) .border-zinc-800 {
+            border-color: #e4e4e7 !important;
+        }
+
+        html:not(.dark) .border-zinc-800\/50 {
+            border-color: rgba(228, 228, 231, 0.5) !important;
+        }
+
+        html:not(.dark) .text-white {
+            color: #18181b !important;
+        }
+
+        html:not(.dark) .text-zinc-300 {
+            color: #52525b !important;
+        }
+
+        html:not(.dark) .text-zinc-400 {
+            color: #71717a !important;
+        }
+
+        html:not(.dark) .text-zinc-500 {
+            color: #a1a1aa !important;
+        }
+
+        html:not(.dark) .text-zinc-600 {
+            color: #a1a1aa !important;
+        }
+
+        html:not(.dark) .text-zinc-200 {
+            color: #27272a !important;
+        }
+
+        html:not(.dark) .bg-zinc-800 {
+            background: #f4f4f5 !important;
+        }
+
+        html:not(.dark) .filter-checkbox {
+            border-color: #d4d4d8;
+        }
+
+        html:not(.dark) ::-webkit-scrollbar-track {
+            background: #fafafa;
+        }
+
+        html:not(.dark) ::-webkit-scrollbar-thumb {
+            background: #d4d4d8;
+        }
+
+        html:not(.dark) .hover\:bg-zinc-800\/50:hover {
+            background: rgba(244, 244, 245, 0.7) !important;
+        }
+
+        /* Hero slideshow */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-950 text-zinc-300 font-sans antialiased selection:bg-red-600/30 selection:text-white">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+       GLOBAL NAVIGATION — Glassmorphic Sticky Navbar
+       ═══════════════════════════════════════════════════════════════ -->
+    <nav id="navbar"
+        class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-zinc-900/70 border-b border-zinc-800/60 transition-all duration-300 ease-out">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-3 group transition-all duration-300">
+                    <img src="IMG_JDM.png" alt="Wangan Imports"
+                        class="w-9 h-9 object-contain transition-all duration-300 group-hover:scale-110" />
+                    <div>
+                        <span class="text-white font-bold text-base tracking-wide">WANGAN IMPORTS</span>
+                        <span class="text-red-500 font-mono text-xs ml-2 hidden sm:inline">ID</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center gap-1">
+                    <a href="#hero"
+                        class="px-4 py-2 text-sm text-zinc-400 hover:text-white transition-all duration-300 rounded-md hover:bg-zinc-800/50">Home</a>
+                    <a href="#screener"
+                        class="px-4 py-2 text-sm text-zinc-400 hover:text-white transition-all duration-300 rounded-md hover:bg-zinc-800/50">Auction
+                        Screener</a>
+                    <a href="how-to-buy.html"
+                        class="px-4 py-2 text-sm text-zinc-400 hover:text-white transition-all duration-300 rounded-md hover:bg-zinc-800/50">How
+                        To Buy</a>
+                    <a href="#dispatch"
+                        class="px-4 py-2 text-sm text-zinc-400 hover:text-white transition-all duration-300 rounded-md hover:bg-zinc-800/50">Order</a>
+                    <a href="#screener"
+                        class="ml-3 px-4 py-2 text-sm font-medium bg-red-600 text-white rounded-md hover:bg-red-500 transition-all duration-300 hover:shadow-lg hover:shadow-red-600/20">
+                        Live Auctions
+                    </a>
+                </div>
+
+                <!-- Language & Theme Toggles -->
+                <div class="hidden md:flex items-center gap-2 ml-2">
+                    <!-- Language Toggle -->
+                    <button id="lang-toggle"
+                        class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono text-zinc-400 border border-zinc-800 rounded-md hover:text-white hover:border-zinc-600 transition-all duration-300"
+                        aria-label="Toggle language">
+                        <span id="lang-label">EN</span>
+                    </button>
+                    <!-- Dark/Light Toggle -->
+                    <button id="theme-toggle"
+                        class="p-2 text-zinc-400 hover:text-white border border-zinc-800 rounded-md hover:border-zinc-600 transition-all duration-300"
+                        aria-label="Toggle theme">
+                        <svg id="icon-moon" class="w-4 h-4 hidden" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                        <svg id="icon-sun" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn"
+                    class="md:hidden p-2 text-zinc-400 hover:text-white transition-all duration-300"
+                    aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4 border-t border-zinc-800/50 mt-2 pt-3">
+                <a href="#hero"
+                    class="block px-4 py-2.5 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-md transition-all duration-300">Home</a>
+                <a href="#screener"
+                    class="block px-4 py-2.5 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-md transition-all duration-300">Auction
+                    Screener</a>
+                <a href="how-to-buy.html"
+                    class="block px-4 py-2.5 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-md transition-all duration-300">How
+                    To Buy</a>
+                <a href="#dispatch"
+                    class="block px-4 py-2.5 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-md transition-all duration-300">Order</a>
+                <a href="#screener"
+                    class="block mt-2 mx-4 px-4 py-2.5 text-sm font-medium text-center bg-red-600 text-white rounded-md hover:bg-red-500 transition-all duration-300">
+                    Live Auctions
+                </a>
+                <!-- Mobile Language & Theme -->
+                <div class="flex items-center gap-2 mt-3 mx-4">
+                    <button id="lang-toggle-mobile"
+                        class="flex-1 py-2 text-xs font-mono text-zinc-400 border border-zinc-800 rounded-md hover:text-white hover:border-zinc-600 transition-all duration-300">
+                        <span id="lang-label-mobile">EN</span>
+                    </button>
+                    <button id="theme-toggle-mobile"
+                        class="flex-1 py-2 text-xs font-mono text-zinc-400 border border-zinc-800 rounded-md hover:text-white hover:border-zinc-600 transition-all duration-300">
+                        🌙 Theme
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+       HERO SECTION — Cinematic Landing
+       ═══════════════════════════════════════════════════════════════ -->
+    <header id="hero" class="relative min-h-screen flex items-center justify-center hero-bg grain overflow-hidden">
+
+        <!-- Stock background slideshow (dimmed) -->
+        <div class="hero-slide active" style="background-image:url('IMG_STOCK1.jpg');"></div>
+        <div class="hero-slide" style="background-image:url('IMG_STOCK2.jpg');"></div>
+        <div class="hero-slide" style="background-image:url('IMG_STOCK3.jpg');"></div>
+        <!-- Dark overlay on top of slideshow -->
+        <div class="absolute inset-0 bg-zinc-950/75 z-[1] pointer-events-none"></div>
+
+        <!-- Decorative elements -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-red-600/5 rounded-full blur-3xl pointer-events-none z-[2]">
+        </div>
+        <div
+            class="absolute bottom-1/3 right-1/4 w-72 h-72 bg-zinc-700/10 rounded-full blur-3xl pointer-events-none z-[2]">
+        </div>
+
+        <!-- Grid lines decoration -->
+        <div class="absolute inset-0 opacity-[0.02] pointer-events-none z-[2]"
+            style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 80px 80px;">
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center pt-20" style="z-index:3;">
+
+            <!-- Status indicator -->
+            <div
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 mb-8 transition-all duration-300">
+                <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                <span class="font-mono text-xs text-zinc-400 tracking-widest uppercase">Live Auction Feed Active</span>
+            </div>
+
+            <!-- Main Title -->
+            <h1
+                class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tight mb-6">
+                WANGAN<br />
+                <span class="text-red-500">IMPORTS</span>
+                <span class="text-zinc-600 font-light ml-2 text-3xl sm:text-4xl md:text-5xl align-middle">ID</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto mb-4 leading-relaxed font-light">
+                Hunting legends on the <span class="text-zinc-200 font-medium">Wangan</span> expressway and the mountain
+                passes of <span class="text-zinc-200 font-medium">Mount Akina</span> — shipping them straight to <span
+                    class="text-red-400 font-medium">Tanjung Priok</span>.
+            </p>
+
+            <!-- Monospace tagline -->
+            <p class="font-mono text-xs sm:text-sm text-zinc-600 mb-10 tracking-wider">
+                // JAPAN_AUCTION → CUSTOMS_CLEARANCE → JAKARTA_DELIVERY
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#screener"
+                    class="glow-pulse inline-flex items-center gap-2 px-8 py-3.5 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 transition-all duration-300 hover:shadow-xl hover:shadow-red-600/25 hover:-translate-y-0.5 text-sm tracking-wide">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    VIEW LIVE AUCTIONS
+                </a>
+                <a href="#dispatch"
+                    class="inline-flex items-center gap-2 px-8 py-3.5 border border-zinc-700 text-zinc-300 font-medium rounded-lg hover:border-zinc-500 hover:text-white hover:bg-zinc-900/50 transition-all duration-300 hover:-translate-y-0.5 text-sm tracking-wide">
+                    <span class="font-mono text-zinc-500">$</span>
+                    REQUEST A HUNT
+                </a>
+            </div>
+
+            <!-- Stats bar -->
+            <div class="mt-16 sm:mt-20 grid grid-cols-3 gap-4 sm:gap-8 max-w-xl mx-auto">
+                <div class="text-center">
+                    <p class="font-mono text-2xl sm:text-3xl font-bold text-white">340<span
+                            class="text-red-500">+</span></p>
+                    <p class="text-xs text-zinc-500 mt-1 tracking-wider uppercase">Cars Imported</p>
+                </div>
+                <div class="text-center border-x border-zinc-800">
+                    <p class="font-mono text-2xl sm:text-3xl font-bold text-white">4.5<span
+                            class="text-red-500">★</span></p>
+                    <p class="text-xs text-zinc-500 mt-1 tracking-wider uppercase">Auction Grade Avg</p>
+                </div>
+                <div class="text-center">
+                    <p class="font-mono text-2xl sm:text-3xl font-bold text-white">14<span class="text-red-500">d</span>
+                    </p>
+                    <p class="text-xs text-zinc-500 mt-1 tracking-wider uppercase">Avg Ship Time</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll hint -->
+        <div
+            class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40 transition-opacity duration-300 hover:opacity-70">
+            <span class="font-mono text-[10px] text-zinc-500 tracking-[0.3em] uppercase">Scroll</span>
+            <div class="w-px h-8 bg-gradient-to-b from-zinc-500 to-transparent"></div>
+        </div>
+    </header>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+       AUCTION SCREENER — Advanced Filter + Data Grid
+       ═══════════════════════════════════════════════════════════════ -->
+    <section id="screener" class="relative py-20 sm:py-28 bg-zinc-950 border-t border-zinc-800/50">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Section Header -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-1.5 h-8 bg-red-600 rounded-full"></div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Auction Screener</h2>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+                    <p class="text-zinc-500 font-light">Filter through our current inventory from Japanese auctions.</p>
+                    <span class="font-mono text-xs text-zinc-600 tracking-wider">// LAST_SYNC:
+                        2026-03-01T13:00:00+09:00</span>
+                </div>
+            </div>
+
+            <!-- Two-Column Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
+
+                <!-- ── Left Sidebar: Filters ── -->
+                <aside class="lg:sticky lg:top-20 lg:self-start space-y-6">
+
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
+                        <h3
+                            class="font-mono text-xs text-zinc-500 tracking-widest uppercase mb-4 flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                            </svg>
+                            Filters
+                        </h3>
+
+                        <!-- Make Filter -->
+                        <div class="mb-6">
+                            <p class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Make</p>
+                            <div class="space-y-2.5">
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="filter-checkbox" checked />
+                                    <span
+                                        class="text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200">Toyota</span>
+                                    <span class="ml-auto font-mono text-[10px] text-zinc-600">24</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="filter-checkbox" checked />
+                                    <span
+                                        class="text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200">Nissan</span>
+                                    <span class="ml-auto font-mono text-[10px] text-zinc-600">18</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="filter-checkbox" checked />
+                                    <span
+                                        class="text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200">Honda</span>
+                                    <span class="ml-auto font-mono text-[10px] text-zinc-600">12</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="filter-checkbox" />
+                                    <span
+                                        class="text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200">Mazda</span>
+                                    <span class="ml-auto font-mono text-[10px] text-zinc-600">7</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="filter-checkbox" />
+                                    <span
+                                        class="text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200">Subaru</span>
+                                    <span class="ml-auto font-mono text-[10px] text-zinc-600">5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="border-t border-zinc-800 my-5"></div>
+
+                        <!-- Auction Grade -->
+                        <div class="mb-6">
+                            <p class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Auction Grade
+                            </p>
+                            <div class="space-y-2.5">
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="filter-checkbox" checked />
+                                    <span
+                                        class="text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 font-mono">5
+                                        — Excellent</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="filter-checkbox" checked />
+                                    <span
+                                        class="text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 font-mono">4.5
+                                        — Very Good</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="filter-checkbox" />
+                                    <span
+                                        class="text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 font-mono">4
+                                        — Good</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="filter-checkbox" />
+                                    <span
+                                        class="text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 font-mono">3.5
+                                        — Fair</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="border-t border-zinc-800 my-5"></div>
+
+                        <!-- Status -->
+                        <div>
+                            <p class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Status</p>
+                            <div class="space-y-2.5">
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="filter-checkbox" checked />
+                                    <span
+                                        class="flex items-center gap-2 text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200">
+                                        <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                                        Landed ID
+                                    </span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="filter-checkbox" checked />
+                                    <span
+                                        class="flex items-center gap-2 text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200">
+                                        <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span>
+                                        In Transit
+                                    </span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="filter-checkbox" />
+                                    <span
+                                        class="flex items-center gap-2 text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200">
+                                        <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                                        Japan
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reset Filters -->
+                    <button
+                        class="w-full py-2.5 text-xs font-mono text-zinc-600 border border-zinc-800 rounded-lg hover:border-zinc-700 hover:text-zinc-400 transition-all duration-300 tracking-wider uppercase">
+                        [ RESET_FILTERS ]
+                    </button>
+
+                </aside>
+
+                <!-- ── Right Data List: Car Listings ── -->
+                <div class="space-y-3">
+
+                    <!-- Result count bar -->
+                    <div class="flex items-center justify-between px-1 mb-2">
+                        <p class="font-mono text-xs text-zinc-600">
+                            <span class="text-zinc-400">54</span> results &mdash; sorted by <span
+                                class="text-red-500">date_listed</span> desc
+                        </p>
+                        <span class="font-mono text-[10px] text-zinc-700">PAGE 1/6</span>
+                    </div>
+
+                    <!-- Car Row 1 -->
+                    <article
+                        class="group bg-zinc-900 border border-zinc-800 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-5 hover:bg-zinc-800/50 hover:border-zinc-700 transition-all duration-300 ease-out cursor-pointer">
+                        <!-- Thumbnail -->
+                        <div
+                            class="w-full sm:w-40 h-28 sm:h-28 bg-zinc-800 rounded-lg flex-shrink-0 overflow-hidden border border-zinc-700/50">
+                            <img src="IMG_BNR34.jpg" alt="Nissan Skyline GT-R R34" class="w-full h-full object-cover" />
+                        </div>
+                        <!-- Details -->
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                                <div>
+                                    <h3
+                                        class="text-white font-semibold text-base group-hover:text-red-400 transition-colors duration-300">
+                                        Nissan Skyline GT-R V-Spec II</h3>
+                                    <p class="text-zinc-500 text-sm">2002 &middot; 48,200 km &middot; 6-Speed Manual</p>
+                                </div>
+                                <span
+                                    class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-[10px] font-mono tracking-wider self-start whitespace-nowrap">
+                                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                                    LANDED_ID
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-1.5 font-mono text-xs">
+                                <div><span class="text-zinc-600">CHASSIS </span><span
+                                        class="text-zinc-300">BNR34-309471</span></div>
+                                <div><span class="text-zinc-600">ENGINE </span><span
+                                        class="text-zinc-300">RB26DETT</span></div>
+                                <div><span class="text-zinc-600">GRADE </span><span class="text-red-400">4.5 B</span>
+                                </div>
+                                <div><span class="text-zinc-600">PRICE </span><span class="text-white font-semibold">IDR
+                                        2.850.000.000</span></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Car Row 2 -->
+                    <article
+                        class="group bg-zinc-900 border border-zinc-800 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-5 hover:bg-zinc-800/50 hover:border-zinc-700 transition-all duration-300 ease-out cursor-pointer">
+                        <div
+                            class="w-full sm:w-40 h-28 sm:h-28 bg-zinc-800 rounded-lg flex-shrink-0 overflow-hidden border border-zinc-700/50">
+                            <img src="IMG_JZA80.jpg" alt="Toyota Supra RZ" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                                <div>
+                                    <h3
+                                        class="text-white font-semibold text-base group-hover:text-red-400 transition-colors duration-300">
+                                        Toyota Supra RZ Twin Turbo</h3>
+                                    <p class="text-zinc-500 text-sm">1997 &middot; 72,400 km &middot; 6-Speed Getrag</p>
+                                </div>
+                                <span
+                                    class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-yellow-500/10 border border-yellow-500/20 rounded-full text-yellow-400 text-[10px] font-mono tracking-wider self-start whitespace-nowrap">
+                                    <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span>
+                                    IN_TRANSIT
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-1.5 font-mono text-xs">
+                                <div><span class="text-zinc-600">CHASSIS </span><span
+                                        class="text-zinc-300">JZA80-0102938</span></div>
+                                <div><span class="text-zinc-600">ENGINE </span><span
+                                        class="text-zinc-300">2JZ-GTE</span></div>
+                                <div><span class="text-zinc-600">GRADE </span><span class="text-red-400">4.5 B</span>
+                                </div>
+                                <div><span class="text-zinc-600">PRICE </span><span class="text-white font-semibold">IDR
+                                        3.200.000.000</span></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Car Row 3 -->
+                    <article
+                        class="group bg-zinc-900 border border-zinc-800 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-5 hover:bg-zinc-800/50 hover:border-zinc-700 transition-all duration-300 ease-out cursor-pointer">
+                        <div
+                            class="w-full sm:w-40 h-28 sm:h-28 bg-zinc-800 rounded-lg flex-shrink-0 overflow-hidden border border-zinc-700/50">
+                            <img src="IMG_AE86.jpg" alt="Toyota AE86 Sprinter Trueno"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                                <div>
+                                    <h3
+                                        class="text-white font-semibold text-base group-hover:text-red-400 transition-colors duration-300">
+                                        Toyota AE86 Sprinter Trueno GT-APEX</h3>
+                                    <p class="text-zinc-500 text-sm">1985 &middot; 124,600 km &middot; 5-Speed Manual
+                                    </p>
+                                </div>
+                                <span
+                                    class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-400/10 border border-blue-400/20 rounded-full text-blue-400 text-[10px] font-mono tracking-wider self-start whitespace-nowrap">
+                                    <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                                    JAPAN
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-1.5 font-mono text-xs">
+                                <div><span class="text-zinc-600">CHASSIS </span><span
+                                        class="text-zinc-300">AE86-5018230</span></div>
+                                <div><span class="text-zinc-600">ENGINE </span><span class="text-zinc-300">4A-GE</span>
+                                </div>
+                                <div><span class="text-zinc-600">GRADE </span><span class="text-red-400">3.5 C</span>
+                                </div>
+                                <div><span class="text-zinc-600">PRICE </span><span class="text-white font-semibold">IDR
+                                        980.000.000</span></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Car Row 4 -->
+                    <article
+                        class="group bg-zinc-900 border border-zinc-800 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-5 hover:bg-zinc-800/50 hover:border-zinc-700 transition-all duration-300 ease-out cursor-pointer">
+                        <div
+                            class="w-full sm:w-40 h-28 sm:h-28 bg-zinc-800 rounded-lg flex-shrink-0 overflow-hidden border border-zinc-700/50">
+                            <img src="IMG_FD3S.jpg" alt="Mazda RX-7 FD3S" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                                <div>
+                                    <h3
+                                        class="text-white font-semibold text-base group-hover:text-red-400 transition-colors duration-300">
+                                        Mazda RX-7 Spirit R Type A</h3>
+                                    <p class="text-zinc-500 text-sm">2002 &middot; 56,800 km &middot; 5-Speed Manual</p>
+                                </div>
+                                <span
+                                    class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-[10px] font-mono tracking-wider self-start whitespace-nowrap">
+                                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                                    LANDED_ID
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-1.5 font-mono text-xs">
+                                <div><span class="text-zinc-600">CHASSIS </span><span
+                                        class="text-zinc-300">FD3S-401928</span></div>
+                                <div><span class="text-zinc-600">ENGINE </span><span
+                                        class="text-zinc-300">13B-REW</span></div>
+                                <div><span class="text-zinc-600">GRADE </span><span class="text-red-400">5 A</span>
+                                </div>
+                                <div><span class="text-zinc-600">PRICE </span><span class="text-white font-semibold">IDR
+                                        1.750.000.000</span></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Car Row 5 -->
+                    <article
+                        class="group bg-zinc-900 border border-zinc-800 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-5 hover:bg-zinc-800/50 hover:border-zinc-700 transition-all duration-300 ease-out cursor-pointer">
+                        <div
+                            class="w-full sm:w-40 h-28 sm:h-28 bg-zinc-800 rounded-lg flex-shrink-0 overflow-hidden border border-zinc-700/50">
+                            <img src="IMG_EK9.jpg" alt="Honda Civic Type R EK9" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                                <div>
+                                    <h3
+                                        class="text-white font-semibold text-base group-hover:text-red-400 transition-colors duration-300">
+                                        Honda Civic Type R (EK9)</h3>
+                                    <p class="text-zinc-500 text-sm">1998 &middot; 89,300 km &middot; 5-Speed Close
+                                        Ratio</p>
+                                </div>
+                                <span
+                                    class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-yellow-500/10 border border-yellow-500/20 rounded-full text-yellow-400 text-[10px] font-mono tracking-wider self-start whitespace-nowrap">
+                                    <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span>
+                                    IN_TRANSIT
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-1.5 font-mono text-xs">
+                                <div><span class="text-zinc-600">CHASSIS </span><span
+                                        class="text-zinc-300">EK9-1200471</span></div>
+                                <div><span class="text-zinc-600">ENGINE </span><span class="text-zinc-300">B16B</span>
+                                </div>
+                                <div><span class="text-zinc-600">GRADE </span><span class="text-red-400">4 B</span>
+                                </div>
+                                <div><span class="text-zinc-600">PRICE </span><span class="text-white font-semibold">IDR
+                                        720.000.000</span></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Car Row 6 -->
+                    <article
+                        class="group bg-zinc-900 border border-zinc-800 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-5 hover:bg-zinc-800/50 hover:border-zinc-700 transition-all duration-300 ease-out cursor-pointer">
+                        <div
+                            class="w-full sm:w-40 h-28 sm:h-28 bg-zinc-800 rounded-lg flex-shrink-0 overflow-hidden border border-zinc-700/50">
+                            <img src="IMG_GC8.jpg" alt="Subaru Impreza WRX STi" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                                <div>
+                                    <h3
+                                        class="text-white font-semibold text-base group-hover:text-red-400 transition-colors duration-300">
+                                        Subaru Impreza WRX STi Type RA</h3>
+                                    <p class="text-zinc-500 text-sm">1999 &middot; 67,100 km &middot; 5-Speed Manual</p>
+                                </div>
+                                <span
+                                    class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-400/10 border border-blue-400/20 rounded-full text-blue-400 text-[10px] font-mono tracking-wider self-start whitespace-nowrap">
+                                    <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                                    JAPAN
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-1.5 font-mono text-xs">
+                                <div><span class="text-zinc-600">CHASSIS </span><span
+                                        class="text-zinc-300">GC8-063D472</span></div>
+                                <div><span class="text-zinc-600">ENGINE </span><span class="text-zinc-300">EJ207</span>
+                                </div>
+                                <div><span class="text-zinc-600">GRADE </span><span class="text-red-400">4.5 A</span>
+                                </div>
+                                <div><span class="text-zinc-600">PRICE </span><span class="text-white font-semibold">IDR
+                                        890.000.000</span></div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+       ORDER YOUR DREAM CAR — Friendly Request Form
+       ═══════════════════════════════════════════════════════════════ -->
+    <section id="dispatch" class="relative py-20 sm:py-28 bg-zinc-950 border-t border-zinc-800/50 overflow-hidden">
+
+        <!-- Decorative glow -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-red-600/5 rounded-full blur-3xl pointer-events-none">
+        </div>
+
+        <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6">
+
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 mb-6">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="font-mono text-xs text-zinc-400 tracking-widest uppercase"
+                        data-lang-en="Accepting Orders Now" data-lang-id="Menerima Pesanan Sekarang">Accepting Orders
+                        Now</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4"
+                    data-lang-en="Find Your Dream JDM Car" data-lang-id="Temukan Mobil JDM Impian Anda">Find Your Dream
+                    JDM Car</h2>
+                <p class="text-zinc-400 font-light max-w-xl mx-auto leading-relaxed"
+                    data-lang-en="Tell us which car you're looking for and our dedicated team in Japan will search top auctions to find the perfect match — delivered straight to your door in Indonesia."
+                    data-lang-id="Beritahu kami mobil apa yang Anda cari dan tim kami di Jepang akan mencari di lelang terbaik untuk menemukan yang sempurna — dikirim langsung ke pintu rumah Anda di Indonesia.">
+                    Tell us which car you're looking for and our dedicated team in Japan will search top auctions to
+                    find the perfect match — delivered straight to your door in Indonesia.</p>
+            </div>
+
+            <!-- How It Works Steps -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+                <div
+                    class="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center hover:border-zinc-700 transition-all duration-300">
+                    <div
+                        class="w-10 h-10 bg-red-600/10 border border-red-600/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="font-mono text-red-500 font-bold text-sm">1</span>
+                    </div>
+                    <p class="text-white font-medium text-sm mb-1" data-lang-en="Submit Your Request"
+                        data-lang-id="Kirim Permintaan Anda">Submit Your Request</p>
+                    <p class="text-zinc-500 text-xs" data-lang-en="Tell us your dream car specs"
+                        data-lang-id="Beritahu spesifikasi mobil impian Anda">Tell us your dream car specs</p>
+                </div>
+                <div
+                    class="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center hover:border-zinc-700 transition-all duration-300">
+                    <div
+                        class="w-10 h-10 bg-red-600/10 border border-red-600/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="font-mono text-red-500 font-bold text-sm">2</span>
+                    </div>
+                    <p class="text-white font-medium text-sm mb-1" data-lang-en="We Search Japan"
+                        data-lang-id="Kami Cari di Jepang">We Search Japan</p>
+                    <p class="text-zinc-500 text-xs" data-lang-en="Our agents bid at top auctions"
+                        data-lang-id="Agen kami melelang di tempat terbaik">Our agents bid at top auctions</p>
+                </div>
+                <div
+                    class="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center hover:border-zinc-700 transition-all duration-300">
+                    <div
+                        class="w-10 h-10 bg-red-600/10 border border-red-600/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="font-mono text-red-500 font-bold text-sm">3</span>
+                    </div>
+                    <p class="text-white font-medium text-sm mb-1" data-lang-en="Delivered to You"
+                        data-lang-id="Dikirim ke Anda">Delivered to You</p>
+                    <p class="text-zinc-500 text-xs" data-lang-en="Shipped & registered in Indonesia"
+                        data-lang-id="Dikirim & didaftarkan di Indonesia">Shipped & registered in Indonesia</p>
+                </div>
+            </div>
+
+            <!-- Order Form Card -->
+            <div class="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl shadow-black/20">
+
+                <!-- Card Header -->
+                <div class="px-6 sm:px-8 py-5 border-b border-zinc-800 flex items-center justify-between">
+                    <div>
+                        <h3 class="text-white font-semibold text-base" data-lang-en="Request a Car Search"
+                            data-lang-id="Minta Pencarian Mobil">Request a Car Search</h3>
+                        <p class="text-zinc-500 text-xs mt-0.5"
+                            data-lang-en="Free consultation · No commitment required"
+                            data-lang-id="Konsultasi gratis · Tanpa komitmen">Free consultation · No commitment required
+                        </p>
+                    </div>
+                    <div
+                        class="w-10 h-10 bg-red-600/10 border border-red-600/20 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Form Body -->
+                <div class="p-6 sm:p-8">
+                    <form id="dispatch-form" class="space-y-6" onsubmit="return false;">
+
+                        <!-- Two-col row -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Full Name -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-400 mb-2" data-lang-en="Full Name"
+                                    data-lang-id="Nama Lengkap">Full Name</label>
+                                <input type="text" placeholder="e.g. Budi Santoso"
+                                    class="w-full bg-transparent border-b border-zinc-700 text-zinc-200 font-mono text-sm py-2.5 px-0 placeholder:text-zinc-700 focus:outline-none focus:border-red-500 transition-all duration-300" />
+                            </div>
+                            <!-- Email or WhatsApp -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-400 mb-2"
+                                    data-lang-en="Email or WhatsApp" data-lang-id="Email atau WhatsApp">Email or
+                                    WhatsApp</label>
+                                <input type="text" placeholder="e.g. +62 812 XXX XXXX"
+                                    class="w-full bg-transparent border-b border-zinc-700 text-zinc-200 font-mono text-sm py-2.5 px-0 placeholder:text-zinc-700 focus:outline-none focus:border-red-500 transition-all duration-300" />
+                            </div>
+                        </div>
+
+                        <!-- Dream Car -->
+                        <div>
+                            <label class="block text-xs font-medium text-zinc-400 mb-2"
+                                data-lang-en="Which car are you looking for?"
+                                data-lang-id="Mobil apa yang Anda cari?">Which car are you looking for?</label>
+                            <input type="text" placeholder="e.g. Nissan Skyline GT-R R34, Toyota Supra MK4..."
+                                class="w-full bg-transparent border-b border-zinc-700 text-zinc-200 font-mono text-sm py-2.5 px-0 placeholder:text-zinc-700 focus:outline-none focus:border-red-500 transition-all duration-300" />
+                        </div>
+
+                        <!-- Two-col row -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Budget Range -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-400 mb-2"
+                                    data-lang-en="Budget Range (IDR)" data-lang-id="Kisaran Budget (IDR)">Budget Range
+                                    (IDR)</label>
+                                <select
+                                    class="w-full bg-transparent border-b border-zinc-700 text-zinc-400 font-mono text-sm py-2.5 px-0 focus:outline-none focus:border-red-500 transition-all duration-300">
+                                    <option value="" class="bg-zinc-900" data-lang-en="Select range"
+                                        data-lang-id="Pilih kisaran">Select range</option>
+                                    <option value="500m-1b" class="bg-zinc-900">IDR 500 Jt – 1 M</option>
+                                    <option value="1b-2b" class="bg-zinc-900">IDR 1 M – 2 M</option>
+                                    <option value="2b-3b" class="bg-zinc-900">IDR 2 M – 3 M</option>
+                                    <option value="3b+" class="bg-zinc-900">IDR 3 M+</option>
+                                </select>
+                            </div>
+                            <!-- Preferred Condition -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-400 mb-2"
+                                    data-lang-en="Preferred Condition" data-lang-id="Kondisi yang Diinginkan">Preferred
+                                    Condition</label>
+                                <select
+                                    class="w-full bg-transparent border-b border-zinc-700 text-zinc-400 font-mono text-sm py-2.5 px-0 focus:outline-none focus:border-red-500 transition-all duration-300">
+                                    <option value="" class="bg-zinc-900" data-lang-en="Any condition"
+                                        data-lang-id="Semua kondisi">Any condition</option>
+                                    <option value="stock" class="bg-zinc-900" data-lang-en="100% Stock / Original"
+                                        data-lang-id="100% Stok / Orisinal">100% Stock / Original</option>
+                                    <option value="light" class="bg-zinc-900" data-lang-en="Lightly Modified"
+                                        data-lang-id="Modifikasi Ringan">Lightly Modified</option>
+                                    <option value="any" class="bg-zinc-900" data-lang-en="Modified OK"
+                                        data-lang-id="Modifikasi OK">Modified OK</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Additional Details -->
+                        <div>
+                            <label class="block text-xs font-medium text-zinc-400 mb-2"
+                                data-lang-en="Any special requests? (optional)"
+                                data-lang-id="Ada permintaan khusus? (opsional)">Any special requests?
+                                (optional)</label>
+                            <textarea rows="3"
+                                placeholder="e.g. Midnight Purple III color, low km, manual transmission..."
+                                class="w-full bg-transparent border-b border-zinc-700 text-zinc-200 font-mono text-sm py-2.5 px-0 placeholder:text-zinc-700 focus:outline-none focus:border-red-500 transition-all duration-300 resize-none"></textarea>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit"
+                            class="w-full py-3.5 text-sm font-semibold tracking-wide bg-red-600 text-white rounded-lg hover:bg-red-500 transition-all duration-300 ease-out hover:shadow-lg hover:shadow-red-600/20 active:scale-[0.98]"
+                            data-lang-en="Send My Request — It's Free" data-lang-id="Kirim Permintaan Saya — Gratis">
+                            Send My Request — It's Free
+                        </button>
+
+                        <!-- Trust indicators -->
+                        <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+                            <span class="flex items-center gap-1.5 text-zinc-600 text-[11px]">
+                                <svg class="w-3.5 h-3.5 text-green-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span data-lang-en="No commitment" data-lang-id="Tanpa komitmen">No commitment</span>
+                            </span>
+                            <span class="flex items-center gap-1.5 text-zinc-600 text-[11px]">
+                                <svg class="w-3.5 h-3.5 text-green-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span data-lang-en="Reply within 24 hours" data-lang-id="Balasan dalam 24 jam">Reply
+                                    within 24 hours</span>
+                            </span>
+                            <span class="flex items-center gap-1.5 text-zinc-600 text-[11px]">
+                                <svg class="w-3.5 h-3.5 text-green-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span data-lang-en="340+ cars delivered" data-lang-id="340+ mobil terkirim">340+ cars
+                                    delivered</span>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+       VIDEO SHOWCASE
+       ═══════════════════════════════════════════════════════════════ -->
+    <section class="py-16 sm:py-24 bg-zinc-950 border-t border-zinc-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-3"
+                    data-lang-en="See It In Action" data-lang-id="See It In Action">See It In Action</h2>
+                <p class="text-zinc-400 font-light"
+                    data-lang-en="Watch how we bring legendary JDM machines from Japan to Indonesia."
+                    data-lang-id="Saksikan bagaimana kami membawa legenda JDM ke Indonesia.">Watch
+                    how we bring legendary JDM machines from Japan to Indonesia.</p>
+            </div>
+            <div class="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl shadow-black/20">
+                <a href="https://www.youtube.com/watch?v=tE0FHS7V4IE" target="_blank" rel="noopener noreferrer"
+                    class="relative block w-full group" style="aspect-ratio: 16/9;">
+                    <img src="https://img.youtube.com/vi/tE0FHS7V4IE/maxresdefault.jpg" alt="Wangan Imports Video"
+                        class="w-full h-full object-cover" />
+                    <!-- YouTube play button overlay -->
+                    <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-all duration-300">
+                        <svg class="w-16 h-12 sm:w-20 sm:h-14 group-hover:scale-110 transition-transform duration-300 drop-shadow-lg"
+                            viewBox="0 0 68 48">
+                            <path
+                                d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.64 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"
+                                fill="#E11D48" />
+                            <path d="M45 24L27 14v20" fill="white" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════════ -->
+    <footer class="border-t border-zinc-800/50 bg-zinc-950 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+
+                <!-- Brand -->
+                <div class="sm:col-span-2 lg:col-span-1">
+                    <div class="flex items-center gap-2 mb-3">
+                        <img src="IMG_JDM.png" alt="Wangan Imports" class="w-7 h-7 object-contain" />
+                        <span class="text-white font-bold text-sm tracking-wide">WANGAN IMPORTS</span>
+                        <span class="text-red-500 font-mono text-[10px]">ID</span>
+                    </div>
+                    <p class="text-zinc-600 text-xs font-light leading-relaxed max-w-xs">
+                        Premium JDM vehicle sourcing from auctions across Japan, delivered to your doorstep in
+                        Indonesia.
+                    </p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <p class="font-mono text-[10px] text-zinc-500 tracking-widest uppercase mb-3">Navigate</p>
+                    <div class="space-y-2">
+                        <a href="#hero"
+                            class="block text-sm text-zinc-500 hover:text-zinc-300 transition-colors duration-200">Home</a>
+                        <a href="#screener"
+                            class="block text-sm text-zinc-500 hover:text-zinc-300 transition-colors duration-200">Auction
+                            Screener</a>
+                        <a href="#dispatch"
+                            class="block text-sm text-zinc-500 hover:text-zinc-300 transition-colors duration-200">Dispatch
+                            Terminal</a>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <p class="font-mono text-[10px] text-zinc-500 tracking-widest uppercase mb-3">Services</p>
+                    <div class="space-y-2">
+                        <p class="text-sm text-zinc-500">Auction Bidding</p>
+                        <p class="text-sm text-zinc-500">Shipping & Logistics</p>
+                        <p class="text-sm text-zinc-500">Customs Clearance</p>
+                        <p class="text-sm text-zinc-500">STNK Registration</p>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <p class="font-mono text-[10px] text-zinc-500 tracking-widest uppercase mb-3">Contact</p>
+                    <div class="space-y-2">
+                        <p class="text-sm text-zinc-500 font-mono">dispatch@wangan.id</p>
+                        <p class="text-sm text-zinc-500 font-mono">+62 21 XXX XXXX</p>
+                        <p class="text-sm text-zinc-500">Jakarta, Indonesia</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="border-t border-zinc-800/50 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <p class="font-mono text-[10px] text-zinc-700 tracking-wider">
+                    &copy; 2026 WANGAN_IMPORTS_ID // ALL_RIGHTS_RESERVED
+                </p>
+                <p class="font-mono text-[10px] text-zinc-800">
+                    // BUILT_WITH_PRECISION // FUELED_BY_PASSION
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // ── Mobile menu toggle ──
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // ── Navbar scroll effect ──
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('border-zinc-700/50', window.scrollY > 50);
+            navbar.classList.toggle('border-zinc-800/60', window.scrollY <= 50);
+        });
+
+        // ── Theme Toggle (Dark / Light) ──
+        const html = document.documentElement;
+        const iconSun = document.getElementById('icon-sun');
+        const iconMoon = document.getElementById('icon-moon');
+        function setTheme(dark) {
+            if (dark) {
+                html.classList.add('dark');
+                iconSun.classList.remove('hidden');
+                iconMoon.classList.add('hidden');
+            } else {
+                html.classList.remove('dark');
+                iconSun.classList.add('hidden');
+                iconMoon.classList.remove('hidden');
+            }
+            localStorage.setItem('wangan-theme', dark ? 'dark' : 'light');
+        }
+        // Init from storage
+        const stored = localStorage.getItem('wangan-theme');
+        if (stored === 'light') setTheme(false);
+
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            setTheme(!html.classList.contains('dark'));
+        });
+        document.getElementById('theme-toggle-mobile').addEventListener('click', () => {
+            setTheme(!html.classList.contains('dark'));
+        });
+
+        // ── Language Toggle (EN / ID) ──
+        let currentLang = localStorage.getItem('wangan-lang') || 'en';
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('wangan-lang', lang);
+            const key = 'data-lang-' + lang;
+            document.querySelectorAll('[data-lang-en]').forEach(el => {
+                const text = el.getAttribute(key);
+                if (text) el.textContent = text;
+            });
+            // Update toggle labels
+            const label = lang === 'en' ? 'EN' : 'ID';
+            const el1 = document.getElementById('lang-label');
+            const el2 = document.getElementById('lang-label-mobile');
+            if (el1) el1.textContent = label;
+            if (el2) el2.textContent = label;
+        }
+        if (currentLang === 'id') setLanguage('id');
+
+        function toggleLang() {
+            setLanguage(currentLang === 'en' ? 'id' : 'en');
+        }
+        document.getElementById('lang-toggle').addEventListener('click', toggleLang);
+        document.getElementById('lang-toggle-mobile').addEventListener('click', toggleLang);
+
+        // ── Hero Background Slideshow ──
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        if (slides.length > 1) {
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 5000);
+        }
+
+        // ── Form submission feedback ──
+        const form = document.getElementById('dispatch-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = currentLang === 'id' ? '✓ Permintaan Terkirim!' : '✓ Request Sent Successfully!';
+            btn.classList.replace('bg-red-600', 'bg-green-600');
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.replace('bg-green-600', 'bg-red-600');
+            }, 2500);
+        });
+    </script>
+
+</body>
+
+</html>
